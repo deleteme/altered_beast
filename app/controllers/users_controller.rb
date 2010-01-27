@@ -102,7 +102,7 @@ protected
   def find_user
     @user = if admin?
       current_site.all_users.find params[:id]
-    elsif params[:id] == current_user.id
+    elsif current_user != nil and params[:id] == current_user.id
       current_user
     else
       current_site.users.find params[:id]
